@@ -14,38 +14,34 @@ function sortear() {
     }
     let resultado = document.getElementById("resultado");
     resultado.innerHTML = `<label class="texto__paragrafo">Os números sorteados foram: ${sorteados}</label>`;
-    alterarStatusBotaoSortear();
-    alterarStatusBotaoReiniciar();
+    alterarStatusBotaoReiniciarEnabled();
 }
 function obterNumeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-function alterarStatusBotaoReiniciar() {
+function limparCampos() {
+    document.getElementById('quantidade').value = "";
+    document.getElementById('de').value = "";
+    document.getElementById('ate').value = "";
+}
+function alterarStatusBotaoReiniciarEnabled() {
     if (statusBotaoReiniciar.classList = 'container__botao-desabilitado') {
         statusBotaoReiniciar.classList.remove('container__botao-desabilitado');
         statusBotaoReiniciar.classList.add('container__botao-habilitado');
         statusBotaoReiniciar.removeAttribute('disabled');
         statusBotaoReiniciar.setAttribute('enabled');
-    } 
+    }
 }
-function alterarStatusBotaoSortear() {
-    if (statusBotaoSortear.classList = 'container__botao-habilitado') {
-        statusBotaoSortear.classList.remove('container__botao-habilitado');
-        statusBotaoSortear.classList.add('container__botao-desabilitado');
-        statusBotaoSortear.removeAttribute('enabled');
-        statusBotaoSortear.setAttribute('disabled', true);
+function alterarStatusBotaoReiniciarDisabled() {
+    if (statusBotaoReiniciar.classList = 'container__botao-habilitado') {
+        statusBotaoReiniciar.classList.remove('container__botao-habilitado');
+        statusBotaoReiniciar.classList.add('container__botao-desabilitado');
+        statusBotaoReiniciar.removeAttribute('enabled');
+        statusBotaoReiniciar.setAttribute('disabled');
     }
 }
 function reiniciar() {
     resultado.innerHTML = '<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>'
-    document.getElementById('quantidade').value = "";
-    document.getElementById('de').value = "";
-    document.getElementById('ate').value = "";
-    alterarStatusBotaoReiniciar();
-    alterarStatusBotaoSortear();
-    retornarStatusPadrao();
-}
-function retornarStatusPadrao (){
-    statusBotaoReiniciar.removeAttribute('enabled');
-    statusBotaoReiniciar.setAttribute('disabled');
+    alterarStatusBotaoReiniciarDisabled();
+    limparCampos();
 }
